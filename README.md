@@ -1,2 +1,2 @@
 # GraphRL
-The Graph Representation Learning Framework contructed by CUK NSLab
+The Graph Representation Learning Framework developed by NS Lab, CUK. 
