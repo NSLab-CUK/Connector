@@ -1,5 +1,5 @@
 # GraphRL
-The Graph Representation Learning Framework developed by NS Lab, CUK. 
+GraphRL is a novel Graph Representation Learning Framework developed by NS Lab, CUK based on pure [PyTorch](https://github.com/pytorch/pytorch) backend. 
 
 <p align=center>
   <a href="https://www.python.org/downloads/release/python-360/">
