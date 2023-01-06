@@ -2,3 +2,6 @@ torch
 numpy
 tqdm
 pandas
+networkx
+scikit-learn
+scipy

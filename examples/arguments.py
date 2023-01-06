@@ -1,11 +1,11 @@
 
 import argparse
+import os
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Run Framework.")
 
     parser.add_argument('--exp_name', type=str, default="run")
-    parser.add_argument('--model', type=str, default="transe")
     parser.add_argument('--seed', type=int, default=2023,
                         help='Random seed.')
 
@@ -23,6 +23,12 @@ def parse_args():
                         help='head / tail Embedding size.')
     parser.add_argument('--relation_dim', type=int, default=300,
                         help='Relation Embedding size.')
+
+    parser.add_argument('--dim', type=int, default=300,
+                        help='Node Embedding size.')
+
+    
+
 
     parser.add_argument('--kg_l2loss_lambda', type=float, default=1e-5,
                         help='Lambda when calculating KG l2 loss.')
@@ -51,7 +57,7 @@ def parse_args():
 
     args.dataset = args.dataset.replace("'", "")
 
-    save_dir = 'result/{}'.format(args.model)
+    save_dir = 'result/{}'.format(os.path.basename(__file__))
     args.save_dir = save_dir
 
     return args

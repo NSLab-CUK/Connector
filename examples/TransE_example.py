@@ -1,7 +1,7 @@
 import torch
 import numpy as np
 import random
-from graphrl.models.TransE import TransE
+from graphrl.models.transe import TransE
 import torch.optim as optim
 from tqdm import tqdm
 from time import time
