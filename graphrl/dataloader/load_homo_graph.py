@@ -5,6 +5,7 @@ from torch.utils.data import Dataset
 import numpy as np
 
 class GraphLoader(Dataset, ABC):
+
     def __init__(self, data_dir, dataset, directed=False, weighted=False, is_sparse=False, device=None):
         super(GraphLoader, self).__init__()
         self.data_dir = data_dir
@@ -48,7 +49,7 @@ class GraphLoader(Dataset, ABC):
             self.graph[src][dst]['weight'] = float(w)
 
             if not self.directed:
-                self.graph.add_edge(src, dst)
+                self.graph.add_edge(dst, src)
                 self.graph[dst][src]['weight'] = float(w)
 
             line = file.readline()
