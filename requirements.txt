@@ -5,3 +5,4 @@ pandas
 networkx
 scikit-learn
 scipy
+gensim
