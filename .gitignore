@@ -130,3 +130,5 @@ dmypy.json
 
 libenv/*
 **/result/**
+
+datasets/net_aminer/*
