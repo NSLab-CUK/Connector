@@ -6,3 +6,4 @@ networkx
 scikit-learn
 scipy
 gensim
+dgl
