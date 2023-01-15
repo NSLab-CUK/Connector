@@ -106,7 +106,7 @@ class DataLoaderBase(object):
         return results
 
 
-class DataLoader(DataLoaderBase):
+class GraphLoader(DataLoaderBase):
 
     def __init__(self, dataset, data_dir, training_batch_size=1024, device="cpu", logging=None):
         super().__init__(dataset=dataset, data_dir=data_dir, device=device)

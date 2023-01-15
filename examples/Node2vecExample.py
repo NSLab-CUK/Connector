@@ -1,7 +1,7 @@
 # This is a sample Python script.
 import random
 import numpy as np
-from graphrl.dataloader.load_homo_graph import GraphLoader
+from graphrl.dataloader.graph.homogeneous import GraphLoader
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 #import matplotlib.pyplot as plt
 import networkx as nx

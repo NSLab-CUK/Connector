@@ -4,7 +4,7 @@ from arguments import parse_args
 import os
 
 from graphrl.utils.log_utils import *
-from graphrl.dataloader.load_homo_graph import GraphLoader
+from graphrl.dataloader.graph.homogeneous import GraphLoader
 from graphrl.utils.train_utils import *
 
 

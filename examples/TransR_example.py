@@ -1,7 +1,7 @@
 import torch
 import numpy as np
 import random
-from graphrl.models.transe import TransE
+from graphrl.models.transr import TransR
 import torch.optim as optim
 from tqdm import tqdm
 from time import time
@@ -28,7 +28,7 @@ def train(args):
     data = GraphLoader(dataset=args.dataset, data_dir=args.data_dir, training_batch_size=args.training_batch_size, device=device, logging=logging)
 
     # construct model & optimizer
-    model = TransE(ent_dim=args.entity_dim, rel_dim=args.relation_dim, n_entities=data.n_entities, n_relations=data.n_relations, device=device)
+    model = TransR(ent_dim=args.entity_dim, rel_dim=args.relation_dim, n_entities=data.n_entities, n_relations=data.n_relations, device=device)
 
     print("Device {}".format(device))
     model.to(device)
@@ -103,13 +103,13 @@ def train(args):
         torch.cuda.empty_cache()
 
         # Logging every epoch
-        logging.info("Loss TransE {}".format(loss_kg_list))
-        logging.info("Training TransE time {}".format(kg_time_training))
+        logging.info("Loss TransR {}".format(loss_kg_list))
+        logging.info("Training TransR time {}".format(kg_time_training))
     
     logging.info("FINALLL -------")
     # Logging every epoch
-    logging.info("TransE loss list {}".format(loss_kg_list))
-    logging.info("TransE time training {}".format(kg_time_training))
+    logging.info("TransR loss list {}".format(loss_kg_list))
+    logging.info("TransR time training {}".format(kg_time_training))
 
 
 

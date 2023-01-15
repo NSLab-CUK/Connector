@@ -4,7 +4,7 @@ import torch.optim as optim
 from arguments import parse_args
 
 from graphrl.utils.log_utils import *
-from graphrl.dataloader.load_hete_graph import GraphLoader, generate_metapath
+from graphrl.dataloader.graph.heterogeneous import GraphLoader, generate_metapath
 from graphrl.utils.train_utils import *
 from tqdm import tqdm
 
@@ -18,7 +18,7 @@ def train(args):
     args.care_type = 0
     args.window_size = 5
     args.batch_size = 512
-    args.lr = 0.1
+    args.lr = 0.01
     data_path = f"{args.data_dir}/{args.dataset}"
 
     generate_metapath(data_path, args.num_walks_per_node, args.walk_length)
