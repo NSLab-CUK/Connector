@@ -9,7 +9,7 @@ import sys
 from arguments import parse_args
 
 from graphrl.utils.log_utils import *
-from graphrl.dataloader.graph.knowledge import DataLoader
+from graphrl.dataloader.graph.knowledge import GraphLoader
 from graphrl.utils.train_utils import *
 
 
@@ -25,7 +25,7 @@ def train(args):
     device = torch.device(args.device if torch.cuda.is_available() else "cpu")
 
     # load data
-    data = DataLoader(dataset=args.dataset, data_dir=args.data_dir, training_batch_size=args.training_batch_size, device=device, logging=logging)
+    data = GraphLoader(dataset=args.dataset, data_dir=args.data_dir, training_batch_size=args.training_batch_size, device=device, logging=logging)
 
     # construct model & optimizer
     model = TransR(ent_dim=args.entity_dim, rel_dim=args.relation_dim, n_entities=data.n_entities, n_relations=data.n_relations, device=device)
