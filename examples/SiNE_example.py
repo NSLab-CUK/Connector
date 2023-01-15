@@ -1,5 +1,5 @@
 import torch.optim as optim
-from graphrl.dataloader.load_signed_graph import SignedGraph
+from graphrl.dataloader.graph.signed import SignedGraph
 from graphrl.models.sine import SiNE
 from arguments import parse_args
 from tqdm import tqdm
