@@ -132,3 +132,5 @@ libenv/*
 **/result/**
 
 datasets/net_aminer/*
+
+examples/*.pkl

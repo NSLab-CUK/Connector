@@ -29,13 +29,10 @@ def train(args):
     print(model.vectors)
 
 
-
 def main():
     args = parse_args()
     train(args)
 
-
+    
 if __name__ == '__main__':
     main()
-
-
