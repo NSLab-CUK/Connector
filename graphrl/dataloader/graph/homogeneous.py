@@ -1,8 +1,11 @@
 from abc import ABC
-
+import torch
 import networkx as nx
 from torch.utils.data import Dataset
 import numpy as np
+import scipy.sparse as sp
+from graphrl.utils.graph_utils import encode_onehot
+from graphrl.utils.matrix_utils import normalize_matrix, convert_sparse_matrix_to_sparse_tensor
 
 class GraphLoader(Dataset, ABC):
 
@@ -68,6 +71,38 @@ class GraphLoader(Dataset, ABC):
         if scaled is not None:  # e.g. scaled = 1
             A = A / A.sum(scaled, keepdims=True)
         return A
+
+    def load_features(self, filename=None):
+        if filename is not None:
+            filename = f"{self.data_dir}/{self.dataset}/{filename}"
+
+        self.index_features = np.genfromtxt(filename, dtype=np.dtype(str))
+        self.features = normalize_matrix(sp.csr_matrix(self.index_features[:, 1:-1], dtype=np.float32))
+        self.labels = encode_onehot(self.index_features[:, -1])
+
+        self.features = torch.FloatTensor(np.array(self.features.todense()))
+        self.labels = torch.LongTensor(np.where(self.labels)[1])
+
+    def load_adj_matrix_from_edges(self, filename=None):
+        if self.index_features is None:
+            self.load_features()
+
+        if filename is not None:
+            filename = f"{self.data_dir}/{self.dataset}/{filename}"
+
+        index_array = np.array(self.index_features[:, 0], dtype=np.int32)
+        index_dict = {j:i for i, j in enumerate(index_array)}
+
+        edges = np.genfromtxt(filename, dtype=np.int32)
+        edges = np.array(list(map(index_dict.get, edges.flatten())), dtype=np.int32).reshape(edges.shape) 
+
+        adj_matrix = sp.coo_matrix((np.ones(edges.shape[0]), (edges[:, 0], edges[:, 1])), shape=(self.labels.shape[0], self.labels.shape[0]), dtype=np.float32)
+
+        adj_matrix = adj_matrix + adj_matrix.T.multiply(adj_matrix.T > adj_matrix) - adj_matrix.multiply(adj_matrix.T > adj_matrix)
+
+        adj_matrix = normalize_matrix(adj_matrix)
+        self.adj_matrix = convert_sparse_matrix_to_sparse_tensor(adj_matrix)
+
 
     @property
     def num_nodes(self):

@@ -35,7 +35,7 @@ def parse_args():
 
     parser.add_argument('--lr', type=float, default=0.0001,
                         help='Learning rate.')
-    parser.add_argument('--n_epoch', type=int, default=20,
+    parser.add_argument('--n_epoch', type=int, default=1000,
                         help='Number of epoch.')
     parser.add_argument('--epoch_data_rate', type=float, default=1,
                         help='Sampling data rate for each epoch.')
