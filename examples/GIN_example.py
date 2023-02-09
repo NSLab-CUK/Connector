@@ -1,5 +1,5 @@
 import torch
-from graphrl.models.gnn import GCN
+from graphrl.models.gnn import GIN
 from arguments import parse_args
 import torch.optim as optim
 import torch.nn.functional as F
@@ -12,8 +12,8 @@ from tqdm import tqdm
 
 
 def train(model, optimizer, features, adj_matrix, labels, epochs, idx_train, idx_val):
-    max_val_acc = 0 
-    
+    max_val_acc = 0
+
     for epoch in tqdm(range(1, epochs + 1)):
         model.train()
         optimizer.zero_grad()
@@ -88,7 +88,7 @@ def main():
 
 
     # construct model & optimizer
-    model = GCN(num_features=features.shape[1], hidden_dim=args.hidden_dim, num_classes=num_classes, num_layers=args.num_layers, dropout=args.dropout)
+    model = GIN(num_features=features.shape[1], hidden_dim=args.hidden_dim, num_classes=num_classes, num_layers=args.num_layers, dropout=args.dropout)
 
     optimizer = optim.Adam(model.parameters(),
                        lr=args.lr, weight_decay=args.weight_decay)
