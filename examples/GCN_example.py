@@ -64,6 +64,7 @@ def main():
     args.num_layers = 3
     args.hidden_dim = 32
     args.weight_decay = 1e-3
+    args.device = 'cuda:0'
 
     # GPU / CPU
     device = torch.device(args.device if torch.cuda.is_available() else "cpu")
@@ -94,7 +95,7 @@ def main():
                        lr=args.lr, weight_decay=args.weight_decay)
 
     print("Device {}".format(device))
-    if device == torch.device("cuda"):
+    if device != torch.device("cpu"):
         idx_train = idx_train.to(device)
         idx_val = idx_val.to(device)
         idx_test = idx_test.to(device)

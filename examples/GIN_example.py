@@ -94,7 +94,7 @@ def main():
                        lr=args.lr, weight_decay=args.weight_decay)
 
     print("Device {}".format(device))
-    if device == torch.device("cuda"):
+    if device != torch.device("cpu"):
         idx_train = idx_train.to(device)
         idx_val = idx_val.to(device)
         idx_test = idx_test.to(device)
