@@ -34,8 +34,8 @@ class ConvolutionalLayer(nn.Module):
         return output
 
 class GCN(BaseModel):
-    def __init__(self, num_features, hidden_dim, num_classes, num_layers, dropout=0, device="cpu"):
-        super(GCN, self).__init__(device)
+    def __init__(self, num_features, hidden_dim, num_classes, num_layers, dropout=0, hidden_layer_activation=nn.LeakyReLU(), output_layer_activation=nn.LogSoftmax()):
+        super(GCN, self).__init__()
         self.num_features = num_features
         self.hidden_dim = hidden_dim
         self.num_classes = num_classes
@@ -48,21 +48,23 @@ class GCN(BaseModel):
         self.conv_layers = nn.ModuleList()
         self.linears = nn.ModuleList()
 
+        self.conv_layers.append(ConvolutionalLayer(self.num_features))
+
         if self.num_layers < 2:
-            self.conv_layers.append(ConvolutionalLayer(self.num_features))
             self.linears.append(nn.Linear(self.num_features, self.num_classes))
-            self.activation_modules.append(nn.LogSoftmax())
         else:
-            self.conv_layers.append(ConvolutionalLayer(num_features, self.hidden_dim))
             self.linears.append(nn.Linear(self.num_features, self.hidden_dim))
-            self.activation_modules.append(nn.LeakyReLU())
+            self.activation_modules.append(hidden_layer_activation)
+
             for layer in range(self.num_layers - 2):
-                self.conv_layers.append(ConvolutionalLayer(self.hidden_dim, self.hidden_dim))
+                self.conv_layers.append(ConvolutionalLayer(self.hidden_dim))
                 self.linears.append(nn.Linear(self.hidden_dim, self.hidden_dim))
-                self.activation_modules.append(nn.LeakyReLU())
+                self.activation_modules.append(hidden_layer_activation)
+
+            self.conv_layers.append(ConvolutionalLayer(self.hidden_dim))
             self.linears.append(nn.Linear(self.hidden_dim, self.num_classes))
-            self.activation_modules.append(nn.LogSoftmax())
-            self.conv_layers.append(ConvolutionalLayer(self.hidden_dim, self.num_classes))
+
+        self.activation_modules.append(output_layer_activation)
 
     def forward(self, x, adj_matrix):
         for layer in range(self.num_layers):
@@ -77,8 +79,8 @@ class GCN(BaseModel):
         
 
 class GraphSAGE(BaseModel):
-    def __init__(self, num_features, hidden_dim, num_classes, num_layers, dropout=0, device="cpu"):
-        super(GraphSAGE, self).__init__(device)
+    def __init__(self, num_features, hidden_dim, num_classes, num_layers, dropout=0, hidden_layer_activation=nn.LeakyReLU(), output_layer_activation=nn.LogSoftmax()):
+        super(GraphSAGE, self).__init__()
         self.num_features = num_features
         self.hidden_dim = hidden_dim
         self.num_classes = num_classes
@@ -91,21 +93,23 @@ class GraphSAGE(BaseModel):
         self.conv_layers = nn.ModuleList()
         self.linears = nn.ModuleList()
 
+        self.conv_layers.append(ConvolutionalLayer(self.num_features))
+
         if self.num_layers < 2:
-            self.conv_layers.append(ConvolutionalLayer(self.num_features))
             self.linears.append(nn.Linear(self.num_features * 2, self.num_classes))
-            self.activation_modules.append(nn.LogSoftmax())
         else:
-            self.conv_layers.append(ConvolutionalLayer(num_features, self.hidden_dim))
             self.linears.append(nn.Linear(self.num_features * 2, self.hidden_dim))
-            self.activation_modules.append(nn.LeakyReLU())
+            self.activation_modules.append(hidden_layer_activation)
+
             for layer in range(self.num_layers - 2):
-                self.conv_layers.append(ConvolutionalLayer(self.hidden_dim, self.hidden_dim))
+                self.conv_layers.append(ConvolutionalLayer(self.hidden_dim))
                 self.linears.append(nn.Linear(self.hidden_dim * 2, self.hidden_dim))
-                self.activation_modules.append(nn.LeakyReLU())
+                self.activation_modules.append(hidden_layer_activation)
+
+            self.conv_layers.append(ConvolutionalLayer(self.hidden_dim))
             self.linears.append(nn.Linear(self.hidden_dim * 2, self.num_classes))
-            self.activation_modules.append(nn.LogSoftmax())
-            self.conv_layers.append(ConvolutionalLayer(self.hidden_dim, self.num_classes))
+        
+        self.activation_modules.append(output_layer_activation)
 
     def forward(self, x, adj_matrix):
         for layer in range(self.num_layers):
@@ -119,8 +123,8 @@ class GraphSAGE(BaseModel):
         return output
 
 class GIN(BaseModel):
-    def __init__(self, num_features, hidden_dim, num_classes, num_layers, dropout=0, device="cpu"):
-        super(GIN, self).__init__(device)
+    def __init__(self, num_features, hidden_dim, num_classes, num_layers, dropout=0, hidden_layer_activation=nn.LeakyReLU(), output_layer_activation=nn.LogSoftmax()):
+        super(GIN, self).__init__()
         self.num_features = num_features
         self.hidden_dim = hidden_dim
         self.num_classes = num_classes
@@ -133,23 +137,18 @@ class GIN(BaseModel):
         self.conv_layers = nn.ModuleList()
         self.linears = nn.ModuleList()
 
-        if self.num_layers < 2:
-            self.conv_layers.append(ConvolutionalLayer(self.num_features))
-            self.linears.append(nn.Linear(self.num_features, self.hidden_dim))
-            self.activation_modules.append(nn.LeakyReLU())
-            self.output_activation = nn.LogSoftmax()
-            self.out_linear = torch.nn.Linear(self.num_features + hidden_dim, self.num_classes)
-        else:
-            self.conv_layers.append(ConvolutionalLayer(num_features, self.hidden_dim))
-            self.linears.append(nn.Linear(self.num_features, self.hidden_dim))
-            self.activation_modules.append(nn.LeakyReLU())
+        self.conv_layers.append(ConvolutionalLayer(self.num_features))
+        self.linears.append(nn.Linear(self.num_features, self.hidden_dim))
+        self.activation_modules.append(hidden_layer_activation)
+
+        if self.num_layers > 1:
             for layer in range(self.num_layers - 1):
-                self.conv_layers.append(ConvolutionalLayer(self.hidden_dim, self.hidden_dim))
+                self.conv_layers.append(ConvolutionalLayer(self.hidden_dim))
                 self.linears.append(nn.Linear(self.hidden_dim, self.hidden_dim))
-                self.activation_modules.append(nn.LeakyReLU())
+                self.activation_modules.append(hidden_layer_activation)
         
-            self.output_activation = nn.LogSoftmax()
-            self.out_linear = torch.nn.Linear(self.num_features + hidden_dim*self.num_layers, self.num_classes)
+        self.out_linear = torch.nn.Linear(self.num_features + hidden_dim*self.num_layers, self.num_classes)
+        self.output_activation = output_layer_activation
 
     def forward(self, x, adj_matrix):
         hidden_states = [x]
