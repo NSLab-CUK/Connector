@@ -83,7 +83,7 @@ class GraphLoader(Dataset, ABC):
         self.features = torch.FloatTensor(np.array(self.features.todense()))
         self.labels = torch.LongTensor(np.where(self.labels)[1])
 
-    def load_adj_matrix_from_edges(self, filename=None):
+    def load_adj_matrix_from_edges(self, filename=None, sparse=False):
         if self.index_features is None:
             self.load_features()
 
@@ -101,7 +101,10 @@ class GraphLoader(Dataset, ABC):
         adj_matrix = adj_matrix + adj_matrix.T.multiply(adj_matrix.T > adj_matrix) - adj_matrix.multiply(adj_matrix.T > adj_matrix)
 
         adj_matrix = normalize_matrix(adj_matrix)
-        self.adj_matrix = convert_sparse_matrix_to_sparse_tensor(adj_matrix)
+        if sparse:
+            self.adj_matrix = convert_sparse_matrix_to_sparse_tensor(adj_matrix)
+        else:
+            self.adj_matrix = torch.FloatTensor(np.array(adj_matrix.todense()))
 
 
     @property
