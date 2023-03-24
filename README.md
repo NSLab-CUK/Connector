@@ -30,3 +30,15 @@ Reseacher members will update this part after publishing this library
 ### To build model:
 
 - Running `python examples/TransE_example.py`
+
+### Contributors
+
+<a href="https://github.com/NSLab-CUK/GraphRL/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=NSLab-CUK/GraphRL" />
+</a>
+
+<br>
+
+***
+
+<a href="https://nslab-cuk.github.io/"><img src="https://github.com/NSLab-CUK/NSLab-CUK/raw/main/Logo_Dual_Wide.png"/></a>
