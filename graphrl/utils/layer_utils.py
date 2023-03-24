@@ -3,7 +3,7 @@ import torch.nn as nn
 
 
 class PositionWiseFeedForward(nn.Module):
-    def __init__(self, d_model, d_ff, dropout):
+    def __init__(self, d_model, d_ff, dropout, activation=nn.GELU()):
         super().__init__()
 
         self.dropout = nn.Dropout(p=dropout)
@@ -11,7 +11,7 @@ class PositionWiseFeedForward(nn.Module):
         self.linear1 = nn.Linear(d_model, d_ff)
         self.linear2 = nn.Linear(d_ff, d_model)
 
-        self.activation = nn.GELU()
+        self.activation = activation
 
     def forward(self, x):
 
