@@ -6,29 +6,19 @@ import torch.nn.functional as F
 
 
 class ConvolutionalLayer(nn.Module):
-    def __init__(self, dim, bias=True):
+    def __init__(self, in_dim, out_dim, bias=True):
         super(ConvolutionalLayer, self).__init__()
-        self.dim = dim
-        self.weight = Parameter(torch.FloatTensor(dim, dim))
-
-        if bias:
-            self.bias = Parameter(torch.FloatTensor(dim))
-        else:
-            self.register_parameter('bias', None)
+        self.linear = nn.Linear(in_dim, out_dim, bias=bias)
 
         self.reset_parameters()
 
     def reset_parameters(self):
         stdv = 1. / math.sqrt(self.weight.size(1))
-        self.weight.data.uniform_(-stdv, stdv)
-        if self.bias is not None:
-            self.bias.data.uniform_(-stdv, stdv)
 
-    def forward(self, input, adj_matrix):
-        output = torch.spmm(adj_matrix, torch.mm(input, self.weight))
+        nn.init.uniform_(self.linear.weight.data, -stdv, stdv)
 
-        if self.bias is not None:
-            return output + self.bias
+    def forward(self, X, adj_matrix):
+        output = torch.spmm(adj_matrix, self.linear(X))
 
         return output
 
