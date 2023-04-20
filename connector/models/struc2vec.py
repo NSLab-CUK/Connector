@@ -9,9 +9,9 @@ from fastdtw import fastdtw
 from gensim.models import Word2Vec
 from joblib import Parallel, delayed
 
-from graphrl.utils.model_utils import create_alias_table
-from graphrl.utils.model_utils import partition_dict, preprocess_nxgraph
-from graphrl.models.walker import BiasedWalker
+from connector.utils.model_utils import create_alias_table
+from connector.utils.model_utils import partition_dict, preprocess_nxgraph
+from connector.models.walker import BiasedWalker
 
 
 class Struc2Vec():

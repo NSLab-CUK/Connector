@@ -7,9 +7,9 @@ import random
 import pandas as pd
 import multiprocessing
 from joblib import Parallel, delayed
-from  graphrl.utils.model_utils import partition_num
-from graphrl.utils.model_utils import alias_sample, create_alias_table
-from graphrl.utils.model_utils import partition_num
+from  connector.utils.model_utils import partition_num
+from connector.utils.model_utils import alias_sample, create_alias_table
+from connector.utils.model_utils import partition_num
 
 
 def deepwalk_walk_wrapper(class_instance, walk_length, start_node):

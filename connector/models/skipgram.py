@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.nn import init
-from graphrl.models.base import BaseModel
+from connector.models.base import BaseModel
 
 class SkipGram(BaseModel):
     def __init__(self, embedding_size, embedding_dim):

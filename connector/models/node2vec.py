@@ -1,7 +1,7 @@
 from gensim.models import Word2Vec
 
 
-import graphrl.models.walker as walker
+import connector.models.walker as walker
 
 
 class Node2vec(object):

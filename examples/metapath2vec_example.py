@@ -1,11 +1,11 @@
 import torch
-from graphrl.models.metapath2vec import Metapath2vec
+from connector.models.metapath2vec import Metapath2vec
 import torch.optim as optim
 from arguments import parse_args
 
-from graphrl.utils.log_utils import *
-from graphrl.dataloader.graph.heterogeneous import GraphLoader, generate_metapath
-from graphrl.utils.train_utils import *
+from connector.utils.log_utils import *
+from connector.dataloader.graph.heterogeneous import GraphLoader, generate_metapath
+from connector.utils.train_utils import *
 from tqdm import tqdm
 
 

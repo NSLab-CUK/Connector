@@ -1,16 +1,16 @@
 import torch
 import numpy as np
 import random
-from graphrl.models.transh import TransH
+from connector.models.transh import TransH
 import torch.optim as optim
 from tqdm import tqdm
 from time import time
 import sys
 from arguments import parse_args
 
-from graphrl.utils.log_utils import *
-from graphrl.dataloader.graph.knowledge import GraphLoader
-from graphrl.utils.train_utils import *
+from connector.utils.log_utils import *
+from connector.dataloader.graph.knowledge import GraphLoader
+from connector.utils.train_utils import *
 
 
 def train(args):

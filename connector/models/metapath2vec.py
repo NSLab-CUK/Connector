@@ -1,5 +1,5 @@
-from graphrl.models.base import BaseModel
-from graphrl.models.skipgram import SkipGram
+from connector.models.base import BaseModel
+from connector.models.skipgram import SkipGram
 from tqdm import tqdm
 import torch
 

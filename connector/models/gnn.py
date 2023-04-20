@@ -2,7 +2,7 @@ import math
 import torch
 import torch.nn as nn
 from torch.nn.parameter import Parameter
-from graphrl.models.base import BaseModel
+from connector.models.base import BaseModel
 from ..layers.gnn_layer import *
 import torch.nn.functional as F
 
