@@ -4,8 +4,8 @@ import networkx as nx
 from torch.utils.data import Dataset
 import numpy as np
 import scipy.sparse as sp
-from graphrl.utils.graph_utils import encode_onehot
-from graphrl.utils.matrix_utils import normalize_matrix, convert_sparse_matrix_to_sparse_tensor
+from connector.utils.graph_utils import encode_onehot
+from connector.utils.matrix_utils import normalize_matrix, convert_sparse_matrix_to_sparse_tensor
 
 class GraphLoader(Dataset, ABC):
 

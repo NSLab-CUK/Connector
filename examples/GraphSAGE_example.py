@@ -1,13 +1,13 @@
 import torch
-from graphrl.models.gnn import GraphSAGE
+from connector.models.gnn import GraphSAGE
 from arguments import parse_args
 import torch.optim as optim
 import torch.nn.functional as F
 import os
 
-from graphrl.utils.log_utils import *
-from graphrl.dataloader.graph.homogeneous import GraphLoader
-from graphrl.utils.train_utils import *
+from connector.utils.log_utils import *
+from connector.dataloader.graph.homogeneous import GraphLoader
+from connector.utils.train_utils import *
 from tqdm import tqdm
 
 

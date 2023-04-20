@@ -2,11 +2,11 @@
 # This is a sample Python script.
 import random
 import numpy as np
-from graphrl.dataloader.graph.homogeneous import GraphLoader
+from connector.dataloader.graph.homogeneous import GraphLoader
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 #import matplotlib.pyplot as plt
 import networkx as nx
-from graphrl.models.struc2vec import Struc2Vec
+from connector.models.struc2vec import Struc2Vec
 from  arguments import parse_args
 
 

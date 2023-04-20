@@ -6,9 +6,9 @@ import torch.nn.functional as F
 
 
 class ConvolutionalLayer(nn.Module):
-    def __init__(self, in_dim, out_dim, bias=True):
+    def __init__(self, dim, bias=True):
         super(ConvolutionalLayer, self).__init__()
-        self.linear = nn.Linear(in_dim, out_dim, bias=bias)
+        self.linear = nn.Linear(dim, dim, bias=bias)
 
         self.reset_parameters()
 

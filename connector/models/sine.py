@@ -2,8 +2,8 @@ import torch
 import torch.nn as nn
 from torch.nn.parameter import Parameter
 from torch.autograd import Variable
-from graphrl.models.base import BaseModel
-from graphrl.utils.model_utils import VECTOR_FUNCTIONS
+from connector.models.base import BaseModel
+from connector.utils.model_utils import VECTOR_FUNCTIONS
 
 
 

@@ -5,7 +5,7 @@ import numpy as np
 from sklearn.preprocessing import normalize
 import torch
 
-from graphrl.models.base import BaseModel
+from connector.models.base import BaseModel
 
 class HOPE(BaseModel):
     def __init__(self, args):

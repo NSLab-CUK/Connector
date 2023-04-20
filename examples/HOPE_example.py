@@ -1,11 +1,11 @@
 import torch
-from graphrl.models.hope import HOPE
+from connector.models.hope import HOPE
 from arguments import parse_args
 import os
 
-from graphrl.utils.log_utils import *
-from graphrl.dataloader.graph.homogeneous import GraphLoader
-from graphrl.utils.train_utils import *
+from connector.utils.log_utils import *
+from connector.dataloader.graph.homogeneous import GraphLoader
+from connector.utils.train_utils import *
 
 
 def train(args):

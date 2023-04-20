@@ -1,9 +1,9 @@
 import torch.optim as optim
-from graphrl.dataloader.graph.signed import SignedGraph
-from graphrl.models.sine import SiNE
+from connector.dataloader.graph.signed import SignedGraph
+from connector.models.sine import SiNE
 from arguments import parse_args
 from tqdm import tqdm
-from graphrl.utils.log_utils import *
+from connector.utils.log_utils import *
 
 def train_model(model, data, args, logging=None):
     triplets = data.get_triplets()

@@ -1,8 +1,8 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from graphrl.utils.model_utils import _L2_loss_mean
-from graphrl.models.base import BaseModel
+from connector.utils.model_utils import _L2_loss_mean
+from connector.models.base import BaseModel
 
 
 class TransE(BaseModel):
