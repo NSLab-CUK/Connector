@@ -1,5 +1,5 @@
-# GraphRL
-GraphRL is a novel Graph Representation Learning Framework developed by NS Lab, CUK based on pure [PyTorch](https://github.com/pytorch/pytorch) backend. 
+# Connector
+Connector is a novel Graph Representation Learning Framework developed by NS Lab, CUK based on pure [PyTorch](https://github.com/pytorch/pytorch) backend. 
 
 <p align=center>
   <a href="https://www.python.org/downloads/release/python-360/">
@@ -34,7 +34,7 @@ Reseacher members will update this part after publishing this library
 ### Contributors
 
 <a href="https://github.com/NSLab-CUK/GraphRL/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=NSLab-CUK/GraphRL" />
+  <img src="https://contrib.rocks/image?repo=NSLab-CUK/connector" />
 </a>
 
 <br>
