@@ -31,13 +31,6 @@ Reseacher members will update this part after publishing this library
 
 - Running `python examples/TransE_example.py`
 
-### Contributors
-
-<a href="https://github.com/NSLab-CUK/GraphRL/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=NSLab-CUK/connector" />
-</a>
-
-
 ## Citing Connector
 
 Please cite our [paper](https://arxiv.org/abs/2304.13195) if you find *Connector* useful in your work:
@@ -51,6 +44,15 @@ Please cite our [paper](https://arxiv.org/abs/2304.13195) if you find *Connector
       primaryClass={cs.LG}
 }
 ```
+
+### Contributors
+
+<a href="https://github.com/NSLab-CUK/GraphRL/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=NSLab-CUK/connector" />
+</a>
+
+
+
 
 
 <br>
