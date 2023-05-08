@@ -45,7 +45,7 @@ Please cite our [paper](https://arxiv.org/abs/2304.13195) if you find *Connector
 }
 ```
 
-### Contributors
+## Contributors
 
 <a href="https://github.com/NSLab-CUK/GraphRL/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=NSLab-CUK/connector" />
