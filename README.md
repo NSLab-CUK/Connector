@@ -9,6 +9,12 @@ Connector is a novel Graph Representation Learning Framework developed by NS Lab
     <img src="https://img.shields.io/badge/PyTorch->=1.4-FF6F00?logo=pytorch&style=flat-square" alt="pytorch">
   </a>    
   <img src="https://custom-icon-badges.demolab.com/github/last-commit/NSLab-CUK/Connector?logo=history&logoColor=white&style=flat-square"/>
+  <img src="https://custom-icon-badges.demolab.com/github/languages/code-size/NSLab-CUK/Connector?logo=file-code&logoColor=white&style=flat-square"/>
+  <img src="https://custom-icon-badges.demolab.com/github/issues-pr-closed/NSLab-CUK/Connector?color=purple&logo=git-pull-request&logoColor=white&style=flat-square"/>
+  <img src="https://custom-icon-badges.demolab.com/github/v/tag/NSLab-CUK/Connector?logo=tag&logoColor=white&style=flat-square"/>
+  <img src="https://custom-icon-badges.demolab.com/github/stars/NSLab-CUK/Connector?logo=star&style=flat-square"/>
+  <img src="https://custom-icon-badges.demolab.com/github/issues-raw/NSLab-CUK/Connector?logo=issue&style=flat-square"/>
+  <img src="https://custom-icon-badges.demolab.com/github/license/NSLab-CUK/Connector?logo=law&style=flat-square"/>
 </p>
 
 ## Setup environment for running:
