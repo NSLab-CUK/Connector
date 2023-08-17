@@ -54,6 +54,7 @@ Please cite our [paper](https://arxiv.org/abs/2304.13195) if you find *Connector
 
 [![arXiv](https://img.shields.io/badge/arXiv-2304.13195-b31b1b?style=flat-square&logo=arxiv&logoColor=red)](https://arxiv.org/abs/2304.13195) 
 [![PwC](https://custom-icon-badges.demolab.com/badge/Papers%20With%20Code-Connector%200%2E5-21CBCE?style=flat-square&logo=paperswithcode)](https://paperswithcode.com/paper/connector-0-5-a-unified-framework-for-graph)
+[![Web](https://img.shields.io/badge/NS@CUK-Post-0C2E86?style=flat-square&logo=jekyll&logoColor=FFFFFF)](https://nslab-cuk.github.io/2023/04/23/Connector0-5/)
 
 ## Contributors
 
