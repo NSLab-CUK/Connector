@@ -38,7 +38,7 @@ Reseacher members will update this part after publishing this library
 
 - Running `python examples/TransE_example.py`
 
-##. Reference
+## Reference
 
 :page_with_curl: Paper [on arXiv](https://arxiv.org/): 
 * [![arXiv](https://img.shields.io/badge/arXiv-2304.13195-b31b1b?style=flat-square&logo=arxiv&logoColor=red)](https://arxiv.org/abs/2304.13195) 
