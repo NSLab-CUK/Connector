@@ -17,6 +17,10 @@ Connector is a novel Graph Representation Learning Framework developed by [NS La
   <img src="https://custom-icon-badges.demolab.com/github/license/NSLab-CUK/Connector?logo=law&style=flat-square"/>
 </p>
 
+## Overview:
+
+We present Connector, a comprehensive graph representation learning framework developed primarily in Python using the PyTorch library. Connector Ver. 0.5 is a test release that will be further developed to enable researchers from different fields to apply graph representation learning models to their research. Connector consists of three main modules: graph data loaders, base model and graph representation learning modules. The graph loader modules introduce four graph loaders, namely homogeneous, heterogeneous, signed graph and knowledge graph loaders, which allow researchers to easily handle different types of graphs. By loading graph data, researchers can build and manipulate datasets with different file structures. The base model module includes different types of neural network layers, aggregators and sampling techniques for graphs to build common tasks such as loading models and loading/saving parameters.
+
 ## Setup environment for running:
 
 - Running: `python -m venv libenv`
